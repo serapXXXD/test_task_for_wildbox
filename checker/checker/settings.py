@@ -45,7 +45,6 @@ INSTALLED_APPS = [
     'rest_framework.authtoken',
     'djoser',
     'api.apps.ApiConfig',
-    'base_registration.apps.BaseRegistrationConfig',
     'drf_yasg',
 ]
 
