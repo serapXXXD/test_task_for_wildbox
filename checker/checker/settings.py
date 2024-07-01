@@ -36,7 +36,8 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'rest_framework',
-    'url_checker.Apps.Url_checkerConfig',
+    'api.Apps.ApiConfig'
+    'djoser',
 ]
 
 MIDDLEWARE = [
