@@ -16,9 +16,12 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
+from .yasg import urlpatterns as yasg_urls
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('api/v1/', include('api.urls', namespace='api')),
-    path('api/v1/auth/', include('djoser.urls')),
-]
+    path('api/', include('api.urls', namespace='api')),
+    path('auth/', include('djoser.urls')),
+    path('auth/registraion/', include('base_registration.urls', namespace='base_registration')),
+    path('auth/', include('djoser.urls.authtoken')),
+] + yasg_urls
