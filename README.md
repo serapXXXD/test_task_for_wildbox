@@ -8,7 +8,7 @@ git clone git@github.com:serapXXXD/test_task_for_wildbox.git
  ```
 Перейдите в 
  ```bash
-cd checker/checker_infra
+cd test_task_for_wildbox/checker_infra
  ```
 Создайте .env файл
  ```bash
@@ -78,9 +78,9 @@ checker_infra_database_1
 
 Выполните 2 следущие команды
  ```bash
-docker exec cism_infra_backend_1 python manage.py collectstatic --no-input
+docker exec checker_infra_backend_1 python manage.py collectstatic --no-input
 
-docker exec cism_infra_backend_1 python manage.py migrate
+docker exec checker_infra_backend_1 python manage.py migrate
  ```
 
 Примичание !
