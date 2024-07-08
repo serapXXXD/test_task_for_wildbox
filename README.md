@@ -49,9 +49,6 @@ DJANGO_SECRET_KEY='django-insecure-Ваш ключ джанго Обязател
 
 DEBUG=1 дебаг включен | 0 дебаг выключен
 
-PRODUCTION=1 база даннных PostgreSQL | 0 SQLite
-
-
 В параметре "ALLOWED_HOSTS" укажите список хостов слитно через запятую
  ```
 
