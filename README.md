@@ -27,7 +27,7 @@ https://djecrety.ir/
 ```bash
 SECRET_KEY='django-insecure-(^+7^zp5&93u_#=u53dtd@@yirm8qfejt6hx*b(k8l5-hn*te6'
 DEBUG=1
-PRODUCTION=1
+
 
 POSTGRES_ENGINE='django.db.backends.postgresql_psycopg2'   # НЕ МЕНЯТЬ!!!
 POSTGRES_NAME=postgres
@@ -76,11 +76,14 @@ checker_infra_redis_1
 checker_infra_database_1
 ```
 
-Выполните 2 следущие команды
+Выполните вход в контейнер checker_infra_backend_1
  ```bash
-docker exec checker_infra_backend_1 python manage.py collectstatic --no-input
-
-docker exec checker_infra_backend_1 python manage.py migrate
+docker exec -it checker_infra_backend_1 sh 
+```
+ ```bash
+python manage.py collectstatic
+python manage.py migrate
+python manage.py create_checker_task
  ```
 
 Примичание !

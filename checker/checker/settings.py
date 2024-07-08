@@ -87,14 +87,6 @@ REST_FRAMEWORK = {
     ),
 }
 
-# if not int(os.environ.get('PRODUCTION')):
-#     DATABASES = {
-#         'default': {
-#             'ENGINE': 'django.db.backends.sqlite3',
-#             'NAME': BASE_DIR / 'db.sqlite3',
-#         }
-#     }
-# else:
 DATABASES = {
     'default': {
         'ENGINE': os.environ.get('POSTGRES_ENGINE', default='django.db.backends.postgresql'),
