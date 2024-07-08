@@ -22,6 +22,5 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('api/', include('api.urls', namespace='api')),
     path('auth/', include('djoser.urls')),
-    path('auth/registraion/', include('base_registration.urls', namespace='base_registration')),
     path('auth/', include('djoser.urls.authtoken')),
 ] + yasg_urls

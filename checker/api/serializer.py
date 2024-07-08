@@ -2,12 +2,6 @@ from rest_framework import serializers
 from .models import UrlData
 
 
-# class UrlDataListSerializer(serializers.ListSerializer):
-#     def create(self, validated_data):
-#         urls = [UrlData(**url) for url in validated_data]
-#         return UrlData.objects.bulk_crteate(urls)
-
-
 class UrlDataSerializer(serializers.ModelSerializer):
     url = serializers.URLField()
     status_code = serializers.IntegerField(read_only=True)
@@ -23,7 +17,6 @@ class UrlDataListSerializer(serializers.ModelSerializer):
 
     def create(self, validated_data):
         urls = [UrlData(url=url) for url in validated_data.pop('url_list')]
-
         return UrlData.objects.bulk_create(urls)
 
     def to_representation(self, items):

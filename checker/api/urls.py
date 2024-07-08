@@ -4,7 +4,7 @@ from .views import UrlCheckerViewSet
 app_name = 'api'
 
 router = SimpleRouter()
-router.register('url_lists', UrlCheckerViewSet)
+router.register('urls', UrlCheckerViewSet)
 
 urlpatterns = [
     ] + router.urls

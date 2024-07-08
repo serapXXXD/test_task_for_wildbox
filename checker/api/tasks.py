@@ -5,8 +5,17 @@ from .models import UrlData
 
 
 @shared_task
-def check_url_status(url_data_obj):
-    status_code = requests.get(url_data_obj.url, timeout=5).status_code
-    url_data_obj['status_code'] = status_code
-    url_data_obj['checked_at'] = datetime.now()
-    url_data_obj.save()
+def check_url_status():
+    urls = UrlData.objects.filter(status_code=None)
+    for url in urls:
+        try:
+            # with open(f'url{url.id}', 'w') as file:
+            #     file.write(url.url)
+            response = requests.get(url.url, timeout=5)
+            url.status_code = response.status_code
+            url.checked_at = datetime.now()
+            url.save()
+        except (requests.ConnectionError, requests.RequestException):
+            continue
+
+# docker exec -it checker_infra_backend_1 python manage.py create_checker_task

@@ -87,24 +87,24 @@ REST_FRAMEWORK = {
     ),
 }
 
-# if not int(os.environ.get('PRODUCTION')):
-#     DATABASES = {
-#         'default': {
-#             'ENGINE': 'django.db.backends.sqlite3',
-#             'NAME': BASE_DIR / 'db.sqlite3',
-#         }
-#     }
-# else:
-DATABASES = {
-    'default': {
-        'ENGINE': os.environ.get('POSTGRES_ENGINE', default='django.db.backends.postgresql'),
-        'NAME': os.environ.get('POSTGRES_NAME', default='postgres'),
-        'USER': os.environ.get('POSTGRES_USER', default='postgres'),
-        'PASSWORD': os.environ.get('POSTGRES_PASSWORD', default='postgres'),
-        'HOST': os.environ.get('POSTGRES_HOST', default='localhost'),
-        'PORT': os.environ.get('POSTGRES_PORT', default='5432'),
+if not int(os.environ.get('PRODUCTION')):
+    DATABASES = {
+        'default': {
+            'ENGINE': 'django.db.backends.sqlite3',
+            'NAME': BASE_DIR / 'db.sqlite3',
+        }
     }
-}
+else:
+    DATABASES = {
+        'default': {
+            'ENGINE': os.environ.get('POSTGRES_ENGINE', default='django.db.backends.postgresql'),
+            'NAME': os.environ.get('POSTGRES_NAME', default='postgres'),
+            'USER': os.environ.get('POSTGRES_USER', default='postgres'),
+            'PASSWORD': os.environ.get('POSTGRES_PASSWORD', default='postgres'),
+            'HOST': os.environ.get('POSTGRES_HOST', default='localhost'),
+            'PORT': os.environ.get('POSTGRES_PORT', default='5432'),
+        }
+    }
 
 # Password validation
 # https://docs.djangoproject.com/en/5.0/ref/settings/#auth-password-validators
@@ -123,8 +123,6 @@ AUTH_PASSWORD_VALIDATORS = [
         'NAME': 'django.contrib.auth.password_validation.NumericPasswordValidator',
     },
 ]
-
-AUTH_USER_MODEL = 'base_registration.CustomUser'
 
 # Internationalization
 # https://docs.djangoproject.com/en/5.0/topics/i18n/
@@ -156,3 +154,6 @@ REDIS_PORT = os.environ.get('REDIS_PORT')
 
 CELERY_BROKER_URL = f"redis://{REDIS_HOST}:{REDIS_PORT}/0"
 CELERY_RESULT_BACKEND = f"redis://{REDIS_HOST}:{REDIS_PORT}/0"
+
+TIME_ZONE = 'Europe/Istanbul'  # UTC +2
+USE_TZ = True
