@@ -2,7 +2,7 @@ from django.db import models
 
 
 class UrlData(models.Model):
-    url = models.URLField(unique=True)
+    url = models.URLField()
     status_code = models.IntegerField(null=True, blank=True, verbose_name='Статус код')
     created_at = models.DateTimeField(auto_now_add=True, verbose_name='Дата создания')
     checked_at = models.DateTimeField(null=True, blank=True, verbose_name='Дата проверки')
