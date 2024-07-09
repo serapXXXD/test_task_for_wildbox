@@ -88,7 +88,7 @@ python manage.py create_checker_task
 
 ```djoser==2.2.2 ```
 
-докементация по djoser
+документация по djoser
 https://djoser.readthedocs.io/en/latest/getting_started.html
 
 ### для создания пользователя 
